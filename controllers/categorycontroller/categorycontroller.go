@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"text/template"
 	"time"
+	"strconv"
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {
@@ -54,9 +55,66 @@ func Add(w http.ResponseWriter, r *http.Request) {
 }
 
 func Edit(w http.ResponseWriter, r *http.Request) {
+	if r.Method == "GET" {
+		temp, err := template.ParseFiles("views/category/edit.html")
+		if err != nil {
+			panic(err)
+		}
+		
+		//konversi id string menjadi int 
+		idString := r.URL.Query().Get("id")
+		id, err := strconv.Atoi(idString)
+		if err != nil {
+			panic(err)
+		}
 
+		category := categorymodel.Detail(id)
+		data := map[string]any{
+			"category": category,
+		}
+
+		temp.Execute(w, data)
+	}
+
+
+	if r.Method == "POST" {
+		var category entities.Category
+	
+		// Konversi string id menjadi int
+		idString := r.FormValue("id")
+		id, err := strconv.Atoi(idString)
+		if err != nil {
+			panic(err)
+		}
+	
+		category.Name = r.FormValue("name")
+		category.UpdatedAt = time.Now()
+	
+		// Memanggil fungsi Update di model
+		if ok := categorymodel.Update(id, category); !ok {
+			// Jika gagal update, redirect kembali ke halaman sebelumnya
+			http.Redirect(w, r, r.Header.Get("Referer"), http.StatusSeeOther)
+			return
+		}
+	
+		// Jika data berhasil di-update
+		http.Redirect(w, r, "/categories", http.StatusSeeOther)
+	}
+	
 }
 
 func Delete(w http.ResponseWriter, r *http.Request) {
+   //konversi id string menjadi int 
+	idString := r.URL.Query().Get("id")
+	id, err := strconv.Atoi(idString)
+	if err != nil {
+		panic(err)
+	}
+
+	if err := categorymodel.Delete(id); err != nil {
+		panic(err)
+	}
+
+	http.Redirect(w, r, "/categories", http.StatusSeeOther)
 
 }
