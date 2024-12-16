@@ -17,7 +17,7 @@ Kemudian install dependensi GO, dengan perintah
 go mod init FP-BPKK
 ```
 ### **Pastikan Mysql aktif**
-Anda dapat menggunaan tools lain untuk mengaktfikan `Mysql`. Pada progam ini saya menggunakan tools `XAMPP` untuk mengaktifkan `Mysql`.
+Anda dapat menggunakan tools lain untuk mengaktifkan `Mysql`. Pada progam ini saya menggunakan tools `XAMPP` untuk mengaktifkan `Mysql`.
 Pada tampilan `XAMPP` untuk memulai klik `Start Apache` dan klik `Start Mysql` pastikan tombol start dalam keadaan `Stop` yang menandahkan bahwa `Apache` dan `Mysql` telah aktif. 
 
 ### **Mulai Menjalankan Program**
@@ -27,7 +27,7 @@ go run .
 ```
 ### **Akses Program dengan Browser**
 setelah `go run .` maka pada terminal VsCode akan muncul tampilan `http://localhost:8080`. Anda tidak hanya mengakses pada port `8080` saja tapi menyesuaikan berdasarkan port yang anda tulis pada progam `main.go`
-karena pada program `main.go` adalah port `8080`, maka anda dapat menggunakan browser dan mengetikan `http://localhost:8080` untuk mengakses aplikasi.
+karena pada `main.go` adalah port `8080`, maka anda dapat menggunakan browser dan mengetikan `http://localhost:8080` untuk mengakses aplikasi.
 
 ## **Memberhentikan Program Aplikasi**
 tekan `Ctrl+C` pada terminal VsCode untuk memberhentikan program aplikasi.
