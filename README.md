@@ -29,5 +29,5 @@ go run .
 setelah `go run .` maka pada terminal VsCode akan muncul tampilan `http://localhost:8080`. Anda tidak hanya mengakses pada port `8080` saja tapi menyesuaikan berdasarkan port yang anda tulis pada progam `main.go`
 karena pada `main.go` adalah port `8080`, maka anda dapat menggunakan browser dan mengetikan `http://localhost:8080` untuk mengakses aplikasi.
 
-## **Memberhentikan Program Aplikasi**
+### **Memberhentikan Program Aplikasi**
 tekan `Ctrl+C` pada terminal VsCode untuk memberhentikan program aplikasi.
